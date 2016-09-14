@@ -1,0 +1,13 @@
+.col-md-8.col-md-offset-2
+  .row
+    .panel.panel-default
+      .panel-heading
+        %h4
+          = @photo.title
+      .panel-body
+        = image_tag @photo.photo.url, class: 'img-responsive'
+      .panel-footer
+        .pull-right
+          .btn-group
+            = link_to "Edit", edit_photo_path(@photo.id), class: 'btn btn-primary'
+            = link_to "Back", root_path, class: 'btn btn-default'

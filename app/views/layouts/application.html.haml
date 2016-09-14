@@ -1,0 +1,19 @@
+!!! 5
+%html
+  %head
+    %title Ducgramm
+    = stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          %a.navbar-brand DucGramm
+        %ul.nav.navbar-nav
+          %li
+            = link_to "Gramm It!", new_photo_path
+    .container.main
+      = yield
+    
+    

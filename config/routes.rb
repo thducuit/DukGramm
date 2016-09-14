@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
-  root 'photo#index'
+  
+  
+  get 'photos/index'
+
+  get 'photos/new'
+
+  get 'photos/create'
+
+  get 'photos/edit'
+
+  get 'photos/update'
+
+  resources :photos
+  root 'photos#index'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
