@@ -5,3 +5,5 @@
         = image_tag photo.photo.url, class: "img-responsive"
         %h2
           = link_to photo.title, photo
+        %small
+          = photo.description
