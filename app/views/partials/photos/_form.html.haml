@@ -1,6 +1,6 @@
 - if @photo.errors.any?
   - @photo.errors.full_messages.each do |m|
-    %li.alert.alert-danger
+    .alert.alert-danger
       = m
 = form_for @photo, html: { multipart: true } do |p|
   .form-group

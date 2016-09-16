@@ -11,7 +11,10 @@ Rails.application.routes.draw do
 
   get 'photos/update'
 
-  resources :photos
+  resources :photos do
+    resources :comments
+  end
+  
   root 'photos#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

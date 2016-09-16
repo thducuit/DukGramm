@@ -14,3 +14,10 @@
             = link_to "Edit", edit_photo_path, class: 'btn btn-primary'
             = link_to "Remove", photo_path, method: :delete, data: { confirm: "Are you sure ?" }, class: "btn btn-danger"
             = link_to "Back", root_path, class: 'btn btn-default'
+  .row
+    .panel.panel-default
+      .panel-heading
+        %h4
+          Comment
+      .panel-body
+        = render 'partials/photos/comment'

@@ -19,10 +19,10 @@ class PhotosController < ApplicationController
   end
   
   def show
+    @comment = Comment.new(:photo => @photo)
   end
 
   def edit
-    render 'edit'
   end
 
   def update
