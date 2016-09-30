@@ -1,11 +1,7 @@
-- if @comment.errors.any?
-  - @comment.errors.full_messages.each do |m|
-    .alert.alert-danger
-      = m
-= form_for ([@photo, @comment]) do |f|
-  .form-group
-    = f.text_area  :content, class: 'form-control'
-    = f.hidden_field :photo_id
-  .pull-right
-    = f.submit  "Send", class:"btn btn-primary"
-    
+%ul.comments
+  - @photo.comments.active.each do |c|
+    %li
+      %small 
+        = c.created_at.strftime("%c")
+      .comment-content
+        = c.content

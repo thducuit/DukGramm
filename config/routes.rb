@@ -15,6 +15,14 @@ Rails.application.routes.draw do
     resources :comments
   end
   
+  get 'active/photos/:photo_id/comments/:id', to: 'comments#active', as: 'comments_active'
+  
+  get 'deactive/photos/:photo_id/comments/:id', to: 'comments#deactive', as: 'comments_deactive'
+  
+  namespace :admin do
+    resources :photos, :comments
+  end
+  
   root 'photos#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

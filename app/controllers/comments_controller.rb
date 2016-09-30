@@ -10,8 +10,27 @@ class CommentsController < ApplicationController
     end
   end
   
-  private
+  def active
+    @comment = Comment.find(params[:id])
+    @comment.status = 1;
+    if @comment.save
+      redirect_to edit_photo_path(params[:photo_id]), notice: "Comment active successfully !"
+    else
+      redirect_to edit_photo_path(params[:photo_id]), :flash => { :error => "Comment active error !" }
+    end 
+  end
   
+  def deactive
+    @comment = Comment.find(params[:id])
+    @comment.status = 0;
+    if @comment.save
+      redirect_to edit_photo_path(params[:photo_id]), notice: "Comment deactive successfully !"
+    else
+      redirect_to edit_photo_path(params[:photo_id]), :flash => { :error => "Comment active error !" }
+    end 
+  end
+  
+  private
   def comment_params
     params.require(:comment).permit(:content, :photo_id);
   end

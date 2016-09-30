@@ -16,4 +16,4 @@
       = image_tag @photo.photo.url(:thumb)
   .pull-right.btn-d-group
     = p.submit class: 'btn btn-primary'
-    = link_to "Cancel", photos_index_path, class: 'btn btn-default'
+    = link_to "Cancel", @photo, class: 'btn btn-default'

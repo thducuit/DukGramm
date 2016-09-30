@@ -1,0 +1,6 @@
+.list-group
+  - @photo.comments.each do |c|
+    - if c.status == 1
+      = link_to c.content, comments_deactive_path(@photo, c), class:'list-group-item active'
+    - else
+      = link_to c.content, comments_active_path(@photo, c), class:'list-group-item'

@@ -14,9 +14,43 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  background: #f7f7f7;
+}
+h1, h2, h3, h4 {
+  color :#40b7b8;
+}
+a, a:hover {
+  color :#40b7b8;
+  text-decoration: none;
+}
+.btn-group-fix {
+  margin-right: 15px;
+}
+.navbar-ducgram-fixed {
+  background :#40b7b8;
+  border-color: #40b7b8;
+}
+.navbar-ducgram-fixed a {
+  color: #fff!important;
+}
 .main {
   margin-top: 60px;
 }
 .btn-d-group{
   margin-top: 15px;
+}
+
+.comments li {
+  list-style: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  position: relative;
+}
+.comments li small {
+  font-size: 10px;
+  position:absolute;
+  top: 10px;
+  right: 10px;
 }

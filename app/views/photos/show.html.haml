@@ -8,12 +8,15 @@
           = @photo.title
       .panel-body
         = image_tag @photo.photo.url, class: 'img-responsive'
+        .small
+          = @photo.description
       .panel-footer
-        .pull-right
-          .btn-group
-            = link_to "Edit", edit_photo_path, class: 'btn btn-primary'
-            = link_to "Remove", photo_path, method: :delete, data: { confirm: "Are you sure ?" }, class: "btn btn-danger"
-            = link_to "Back", root_path, class: 'btn btn-default'
+        .row
+          .pull-right
+            .btn-group.btn-group-fix
+              = link_to "Edit", edit_photo_path, class: 'btn btn-primary'
+              = link_to "Remove", photo_path, method: :delete, data: { confirm: "Are you sure ?" }, class: "btn btn-danger"
+              = link_to "Back", root_path, class: 'btn btn-default'
   .row
     .panel.panel-default
       .panel-heading
@@ -21,3 +24,4 @@
           Comment
       .panel-body
         = render 'partials/photos/comment'
+        = render 'partials/photos/comment_form'
