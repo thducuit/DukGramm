@@ -1,7 +1,12 @@
 %ul.comments
   - @photo.comments.active.each do |c|
     %li
-      %small 
+      %small.date
         = c.created_at.strftime("%c")
       .comment-content
+        - unless c.user.nil?
+          %small.account
+            = c.user.email
+        - else
+          %small.account Guest
         = c.content

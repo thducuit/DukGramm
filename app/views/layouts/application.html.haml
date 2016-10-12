@@ -12,8 +12,26 @@
           %a.navbar-brand DucGramm
         %ul.nav.navbar-nav
           %li
-            = link_to "Gramm It!", new_photo_path
+            - if user_signed_in?
+              = link_to "Gramm It!", new_photo_path
+        %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            %li
+              = link_to raw("<span class='glyphicon glyphicon-log-out'></span>Logout"), destroy_user_session_path, method: :delete
+          - else
+            %li
+              %a{:href=>new_user_registration_path}
+                %span.glyphicon.glyphicon-user 
+                Sign Up
+            %li
+              %a{:href=> new_user_session_path }
+                %span.glyphicon.glyphicon-log-in
+                Login
+              
+            
     .container.main
+      - flash.each do |key, value|
+        = content_tag  :div, value, class: "alert alert-#{key}"
       = yield
     
     

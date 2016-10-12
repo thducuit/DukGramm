@@ -1,6 +1,6 @@
 .col-md-8.col-md-offset-2
   - flash.each do |name, msg|
-    =content_tag  :div, msg, class: 'alert alert-info'
+    = content_tag  :div, msg, class: 'alert alert-info'
   .row
     .panel.panel-default
       .panel-heading
@@ -14,14 +14,16 @@
         .row
           .pull-right
             .btn-group.btn-group-fix
-              = link_to "Edit", edit_photo_path, class: 'btn btn-primary'
-              = link_to "Remove", photo_path, method: :delete, data: { confirm: "Are you sure ?" }, class: "btn btn-danger"
+              - if user_signed_in?
+                = link_to "Edit", edit_photo_path, class: 'btn btn-primary'
+                = link_to "Remove", photo_path, method: :delete, data: { confirm: "Are you sure ?" }, class: "btn btn-danger"
               = link_to "Back", root_path, class: 'btn btn-default'
-  .row
-    .panel.panel-default
-      .panel-heading
-        %h4
-          Comment
-      .panel-body
-        = render 'partials/photos/comment'
-        = render 'partials/photos/comment_form'
+  - if user_signed_in?
+    .row
+      .panel.panel-default
+        .panel-heading
+          %h4
+            Comment
+        .panel-body
+          = render 'partials/photos/comment'
+          = render 'partials/photos/comment_form'
