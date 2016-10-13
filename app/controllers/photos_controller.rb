@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :find_photo, only: [:show, :edit, :update, :destroy]
+  before_action :find_photo, only: [:show, :edit, :update, :destroy, :upvote]
   before_action :authenticate_user!, except: [:index, :show]
   def index
     @photos = Photo.all.order("created_at DESC")
@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
   end
   
   def show
-    @comment = current_user.comments.build(:photo => @photo)
+    @comment = Comment.new(:photo => @photo)
   end
 
   def edit
@@ -36,6 +36,11 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     redirect_to root_path
+  end
+  
+  def upvote
+    @photo.upvote_by current_user
+    redirect_to :back
   end
   
   private

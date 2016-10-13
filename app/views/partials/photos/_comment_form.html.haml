@@ -1,7 +1,3 @@
-- if @comment.errors.any?
-  - @comment.errors.full_messages.each do |m|
-    .alert.alert-danger
-      = m
 = form_for ([@photo, @comment]) do |f|
   .form-group
     = f.text_area  :content, class: 'form-control'

@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  
-  
   devise_for :users
   get 'photos/index'
 
@@ -14,6 +12,9 @@ Rails.application.routes.draw do
 
   resources :photos do
     resources :comments
+    member  do
+      put "like", to: "photos#upvote"
+    end
   end
   
   get 'active/photos/:photo_id/comments/:id', to: 'comments#active', as: 'comments_active'

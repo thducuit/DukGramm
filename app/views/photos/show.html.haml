@@ -14,6 +14,9 @@
         .row
           .pull-right
             .btn-group.btn-group-fix
+              = link_to like_photo_path, method: "put", class: "btn btn-default" do
+                %span.glyphicon.glyphicon-thumbs-up
+                = @photo.get_upvotes.size
               - if user_signed_in?
                 = link_to "Edit", edit_photo_path, class: 'btn btn-primary'
                 = link_to "Remove", photo_path, method: :delete, data: { confirm: "Are you sure ?" }, class: "btn btn-danger"
