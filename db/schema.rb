@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013031146) do
+ActiveRecord::Schema.define(version: 20161227025745) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "content",    limit: 255
@@ -32,6 +32,21 @@ ActiveRecord::Schema.define(version: 20161013031146) do
     t.integer  "photo_file_size",    limit: 4
     t.datetime "photo_updated_at"
     t.integer  "user_id",            limit: 4
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id",     limit: 4
+    t.integer  "photo_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "taggings", ["tag_id", "photo_id"], name: "index_taggings_on_tag_id_and_photo_id", unique: true, using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "label",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|

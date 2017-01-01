@@ -2,7 +2,11 @@ class PhotosController < ApplicationController
   before_action :find_photo, only: [:show, :edit, :update, :destroy, :upvote]
   before_action :authenticate_user!, except: [:index, :show]
   def index
-    @photos = Photo.all.order("created_at DESC")
+    if(params[:tag])
+      @photos = Photo.tag_with(params[:tag])
+    else
+      @photos = Photo.all.order("created_at DESC")
+    end
   end
 
   def new
@@ -50,6 +54,6 @@ class PhotosController < ApplicationController
   end
   
   def photo_params
-    params.require(:photo).permit(:title, :description, :photo)
+    params.require(:photo).permit(:title, :description, :photo, :tag_list)
   end
 end

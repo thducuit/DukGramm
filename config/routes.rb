@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     resources :photos, :comments
   end
   
+  get 'tag/:tag', to: 'photos#index', as: 'tag'
+  
   root 'photos#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

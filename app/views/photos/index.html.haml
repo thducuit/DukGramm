@@ -3,6 +3,8 @@
     .box.panel.panel-default
       .panel-body
         = image_tag photo.photo.url, class: "img-responsive"
+        .tags
+          = raw tag_links(photo.tag_list)
         %h4
           = link_to photo.title, photo
         %small

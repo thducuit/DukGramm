@@ -9,7 +9,7 @@
     %nav.navbar.navbar-inverse.navbar-fixed-top.navbar-ducgram-fixed
       .container-fluid
         .navbar-header
-          %a.navbar-brand DucGramm
+          = link_to "DucGramm", root_path, class: 'navbar-brand'
         %ul.nav.navbar-nav
           %li
             - if user_signed_in?

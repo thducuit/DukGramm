@@ -10,6 +10,9 @@
     = p.file_field :photo
     - if @photo.photo.exists?
       = image_tag @photo.photo.url(:thumb)
+  .form-group
+    = p.label :tag_list
+    = p.text_field :tag_list, 'data-role' => "tagsinput", class: 'form-control'
   .pull-right.btn-d-group
     = p.submit class: 'btn btn-primary'
     = link_to "Cancel", @photo, class: 'btn btn-default'
